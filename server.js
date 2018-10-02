@@ -14,7 +14,7 @@ app.get('/', (req,res) => res.send('Hello World!'));
 app.post('/secret', (req, res) => {
   const { userInput } = req.body;
   winston.log(userInput);
-  if(userInput) {
+  if (userInput) {
     winston.log('info', 'user input: ' + userInput);
     res.status(200).json('success');
   } else {
