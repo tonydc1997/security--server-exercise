@@ -15,8 +15,10 @@ app.post('/secret', (req, res) => {
   const { userInput } = req.body;
   winston.log(userInput);
   if(userInput) {
+    winston.log('info', 'user input: ' + userInput);
     res.status(200).json('success');
   } else {
+    winston.log('Something may have gone wrong: ' + userInput);
     res.status(400).json('incorrect submission');
   }
 });
