@@ -10,5 +10,12 @@ app.get('/', (req,res) => res.send('Hello World!'));
 
 app.post('/secret', (req, res) => {
   const { userInput } = req.body;
-  console.log(req.body);
+  console.log(userInput);
+  if(userInput) {
+    res.status(200).json('success');
+  } else {
+    res.status(400).json('incorrect submission');
+  }
 });
+
+
