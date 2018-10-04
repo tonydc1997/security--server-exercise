@@ -7,8 +7,19 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const app = express();
 
+var whitelist = ['https://tonydc1997.github.io/']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
